@@ -1,7 +1,9 @@
 const express = require("express");
 const cors = require("cors");
 const contactsRouter = require("./app/routes/contact.route");
-const ApiError = require("./app/api-error");
+const apiError = require("./app/api-error");
+
+
 
 const app = express();
 
@@ -15,7 +17,7 @@ app.use((req, res, next) => {
     // khớp với yêu cầu. Gọi next() để chuyển sang middleware xử lý lỗi
     return next(new ApiError(404, "Resource not found"));
     });
-    
+
     // define error-handling middleware last, after other app.use() and routes calls
     app.use((err, req, res, next) => {
     // Middleware xử lý lỗi tập trung.
